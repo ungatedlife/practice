@@ -1,3 +1,19 @@
+:root[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #fff;
+    --component-bg: #333;
+    --component-border: #505050;
+    --hover-bg: #404040;
+}
+
+:root[data-theme="light"] {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --component-bg: #fff;
+    --component-border: #ddd;
+    --hover-bg: #f5f5f5;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +25,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1a1a1a;
+    background: var(--bg-color);
     font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -18,9 +35,59 @@ body {
 }
 
 h1 {
-    color: #fff;
+    color: var(--text-color);
     margin-bottom: 2rem;
     font-size: 2.5rem;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.theme-toggle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--component-bg);
+    border: 2px solid var(--component-border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.05);
+    background: var(--hover-bg);
+}
+
+.theme-toggle-btn i {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.light-icon {
+    display: none;
+}
+
+[data-theme="light"] .light-icon {
+    display: block;
+}
+
+[data-theme="light"] .dark-icon {
+    display: none;
+}
+
+[data-theme="dark"] .light-icon {
+    display: none;
+}
+
+[data-theme="dark"] .dark-icon {
+    display: block;
 }
 
 .timer {
@@ -33,12 +100,12 @@ h1 {
 
 .digit-group {
     position: relative;
-    background: #333;
+    background: var(--component-bg);
     border-radius: 10px;
     width: 100px;
     height: 140px;
     font-size: 5rem;
-    color: #fff;
+    color: var(--text-color);
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
     perspective: 400px;
 }
@@ -50,7 +117,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #404040;
+    background: var(--hover-bg);
     border-radius: 10px;
     transform-style: preserve-3d;
     transition: transform 0.3s ease-in;
@@ -69,7 +136,7 @@ h1 {
     align-items: center;
     justify-content: center;
     backface-visibility: hidden;
-    background: #404040;
+    background: var(--hover-bg);
     border-radius: 10px;
 }
 
@@ -79,8 +146,8 @@ h1 {
 
 .separator {
     font-size: 5rem;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    color: var(--text-color);
+    text-shadow: 0 0 10px rgba(0,0,0,0.2);
     animation: blink 1s infinite;
 }
 
@@ -99,14 +166,14 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #333;
-    border: 2px solid #505050;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3), inset 0 0 15px rgba(0,0,0,0.3);
+    background: var(--component-bg);
+    border: 2px solid var(--component-border);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
 .control-btn:hover {
-    background: #404040;
+    background: var(--hover-bg);
     transform: scale(1.05);
 }
 
@@ -115,8 +182,7 @@ h1 {
 }
 
 .control-btn i {
-    font-size: 1.5rem;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .hidden {
@@ -125,12 +191,12 @@ h1 {
 
 .toggle-switch {
     position: relative;
-    background: #333;
+    background: var(--component-bg);
     border-radius: 30px;
     padding: 5px;
     display: inline-flex;
     box-shadow: 0 0 10px rgba(0,0,0,0.3), inset 0 0 15px rgba(0,0,0,0.3);
-    border: 2px solid #505050;
+    border: 2px solid var(--component-border);
 }
 
 .toggle-switch input[type="radio"] {

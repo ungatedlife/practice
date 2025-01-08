@@ -1,3 +1,27 @@
+class ThemeManager {
+    constructor() {
+        this.themeToggle = document.getElementById('themeToggle');
+        this.currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        this.initializeTheme();
+        this.initializeEventListeners();
+    }
+
+    initializeTheme() {
+        document.documentElement.setAttribute('data-theme', this.currentTheme);
+    }
+
+    initializeEventListeners() {
+        this.themeToggle.addEventListener('click', () => this.toggleTheme());
+    }
+
+    toggleTheme() {
+        this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', this.currentTheme);
+        localStorage.setItem('theme', this.currentTheme);
+    }
+}
+
 class FlipClock {
     constructor() {
         this.minutesTens = document.querySelector('.minutes-tens');
@@ -125,7 +149,8 @@ class FlipClock {
     }
 }
 
-// Initialize the clock when the page loads
+// Initialize both classes when the page loads
 document.addEventListener('DOMContentLoaded', () => {
+    new ThemeManager();
     new FlipClock();
 }); 
