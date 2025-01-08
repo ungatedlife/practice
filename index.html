@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pomodoro Timer</h1>
+        <div class="timer">
+            <div class="digit-group minutes-tens">
+                <div class="digit">
+                    <div class="digit-front">2</div>
+                    <div class="digit-back">2</div>
+                </div>
+            </div>
+            <div class="digit-group minutes-ones">
+                <div class="digit">
+                    <div class="digit-front">5</div>
+                    <div class="digit-back">5</div>
+                </div>
+            </div>
+            <div class="separator">:</div>
+            <div class="digit-group seconds-tens">
+                <div class="digit">
+                    <div class="digit-front">0</div>
+                    <div class="digit-back">0</div>
+                </div>
+            </div>
+            <div class="digit-group seconds-ones">
+                <div class="digit">
+                    <div class="digit-front">0</div>
+                    <div class="digit-back">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="startPause" class="control-btn">
+                <i class="fas fa-play play-icon"></i>
+                <i class="fas fa-pause pause-icon hidden"></i>
+            </button>
+            <button id="reset" class="control-btn">
+                <i class="fas fa-undo-alt"></i>
+            </button>
+        </div>
+        <div class="mode-selector">
+            <div class="toggle-switch">
+                <input type="radio" id="pomodoro" name="mode" value="25" checked>
+                <label for="pomodoro">Pomodoro</label>
+                <input type="radio" id="shortBreak" name="mode" value="5">
+                <label for="shortBreak">Short Break</label>
+                <input type="radio" id="longBreak" name="mode" value="15">
+                <label for="longBreak">Long Break</label>
+                <div class="toggle-slider"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

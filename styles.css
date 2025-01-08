@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a1a;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    perspective: 400px;
+}
+
+.digit-group {
+    position: relative;
+    background: #333;
+    border-radius: 10px;
+    width: 100px;
+    height: 140px;
+    font-size: 5rem;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    perspective: 400px;
+}
+
+.digit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #404040;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-in;
+}
+
+.digit.flip {
+    transform: rotateX(-180deg);
+}
+
+.digit-front,
+.digit-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    background: #404040;
+    border-radius: 10px;
+}
+
+.digit-back {
+    transform: rotateX(180deg);
+}
+
+.separator {
+    font-size: 5rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    animation: blink 1s infinite;
+}
+
+.controls {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #333;
+    border: 2px solid #505050;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3), inset 0 0 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: #404040;
+    transform: scale(1.05);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+.control-btn i {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+.toggle-switch {
+    position: relative;
+    background: #333;
+    border-radius: 30px;
+    padding: 5px;
+    display: inline-flex;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3), inset 0 0 15px rgba(0,0,0,0.3);
+    border: 2px solid #505050;
+}
+
+.toggle-switch input[type="radio"] {
+    display: none;
+}
+
+.toggle-switch label {
+    position: relative;
+    z-index: 2;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #888;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+}
+
+.toggle-switch input[type="radio"]:checked + label {
+    color: #fff;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: calc(100% - 10px);
+    width: 120px;
+    background: #505050;
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+#pomodoro:checked ~ .toggle-slider {
+    transform: translateX(0);
+}
+
+#shortBreak:checked ~ .toggle-slider {
+    transform: translateX(120px);
+}
+
+#longBreak:checked ~ .toggle-slider {
+    transform: translateX(240px);
+}
+
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mode {
+    background: #333;
+}
+
+.mode.active {
+    background: #505050;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+} 
